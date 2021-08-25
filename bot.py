@@ -1,6 +1,6 @@
 import discord
 import random
-from discord_components import DiscordComponents, Button, ButtonStyle, InterationType
+from discord_components import *
 from discord.ext import commands
 
 
@@ -17,6 +17,7 @@ async def on_ready():
 
 @bot.command()
 async def commanders(ctx):
+    print ("called commanders")
     info = discord.Embed(title=f"Talent Tree", description="Click the arrows to see different talent tree builds")
     await ctx.send(
         embed = info,
