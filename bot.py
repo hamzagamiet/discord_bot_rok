@@ -1,6 +1,6 @@
 import discord
 import random
-from discord_components import *
+from discord_components import DiscordComponents, Button, ButtonStyle, InterationType
 from discord.ext import commands
 
 
