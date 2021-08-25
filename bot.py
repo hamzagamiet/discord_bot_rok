@@ -33,6 +33,8 @@ async def commanders(ctx):
             await message.channel.send(f"Left")
         if left_or_right == "<":
             await message.channel.send(f"Right")
+    except:
+        continue
 
 @client.event
 async def on_message(message):
