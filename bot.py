@@ -1,15 +1,38 @@
 import discord
 import random
+from discord_components import *
+from discord.ext import commands
 
 
 TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.tmK7z05SOsTLSJ3hiY485EZs4Hs"
 
+bot = commands.Bot(command_prefix= ="!")
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print ("We have logged in as {0.user}".format(client))
+    DiscordComponents(bot)
+    print ("{0.user} is online".format(client))
+
+@bot.command()
+async def commanders(ctx):
+    info = discord.Embed(title=f"Talent Tree", description="Click the arrows to see different talent tree builds")
+    await ctx.send(
+        embed = info
+        components = [
+            Button(style=1, label="<"),
+            Button(style = 1, label=">")
+            ]
+    )
+    try:
+        res = await bot.wait_for("button click", check = check)
+        left_or_right = res.component.label
+
+        if left_or_right == "<":
+            await message.channel.send(f"Left")
+        if left_or_right == "<":
+            await message.channel.send(f"Right")
 
 @client.event
 async def on_message(message):
