@@ -1,53 +1,57 @@
 import discord
 import random
-from discord_components import *
+from discord_buttons_plugin import *
 from discord.ext import commands
 
 
 TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.tmK7z05SOsTLSJ3hiY485EZs4Hs"
 
-bot = commands.Bot(command_prefix ="!")
+bot = commands.Bot(command_prefix = "!")
+buttons = ButtonsClient(bot)
 
-client = discord.Client()
-
-@client.event
+@bot.event
 async def on_ready():
-    DiscordComponents(bot)
-    print ("{0.user} is online".format(client))
+    print ("{0.user} is online".format(bot))
 
 @bot.command()
-async def commanders(ctx):
-    print ("called commanders")
+async def comm(ctx):
     info = discord.Embed(title=f"Talent Tree", description="Click the arrows to see different talent tree builds")
-    await ctx.send(
+    await buttons.send(
         embed = info,
+        channel = ctx.channel.id,
         components = [
-            Button(style=1, label="<"),
-            Button(style = 1, label=">")
-            ]
+            ActionRow([
+                Button(
+                    label = "<",
+                    style = ButtonType().Primary,
+                    custom_id = "left"
+                ),
+                Button(
+                    label = ">",
+                    style = ButtonType().Primary,
+                    custom_id = "right"
+                )
+            ])
+        ]
     )
-    res = await bot.wait_for("button click", check = check)
-    left_or_right = res.component.label
 
-    if left_or_right == "<":
-        await message.channel.send(f"Left")
-    if left_or_right == "<":
-        await message.channel.send(f"Right")
 
-@client.event
+@bot.event
 async def on_message(message):
+    await bot.process_commands(message)
     username = str(message.author).split("#")[0]
     user_message = str(message.content)
     channel = str(message.channel.name)
     print(f"{username}: {user_message} ({channel})")
 
     #if message author is the bot itself, don't reply
-    if message.author == client.user:
+    if message.author == bot.user:
         return
 
     #replies to general chat
     if message.channel.name == "general":
         if user_message.lower() == "hello":
+            print("say hello")
             await message.channel.send(f"hello {username}!")
             return
         elif user_message.lower() == "bye":
@@ -59,4 +63,4 @@ async def on_message(message):
             return
 
 
-client.run(TOKEN)
+bot.run(TOKEN)
