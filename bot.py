@@ -1,5 +1,6 @@
 import discord
 import random
+from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType
 
 
 TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.tmK7z05SOsTLSJ3hiY485EZs4Hs"
@@ -33,6 +34,7 @@ async def on_message(message):
         elif user_message.lower() == "!random":
             response = f"your random number is {random.randrange(1000000)}!"
             await message.channel.send(response)
+            await ctx.send(type=InteractionType.ChannelMessageWithSource, content=response, components=[Button(style=ButtonStyle.URL, label="Example Invite Button", url="https://google.com"), Button(style=ButtonStyle.blue, label="Default Button", custom_id="button")])
             return
 
 
