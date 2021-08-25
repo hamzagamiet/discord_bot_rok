@@ -1,3 +1,3 @@
 discord
-discord_components
+discord_buttons_plugin
 discord-ext-bot
