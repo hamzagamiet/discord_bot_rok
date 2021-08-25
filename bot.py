@@ -38,6 +38,7 @@ async def comm(ctx):
 
 @bot.event
 async def on_message(message):
+    print ("message")
     await bot.process_commands(message)
     username = str(message.author).split("#")[0]
     user_message = str(message.content)
