@@ -6,7 +6,7 @@ from dictionaries import commanders
 from datetime import datetime
 
 
-TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.tmK7z05SOsTLSJ3hiY485EZs4Hs"
+TOKEN = ""
 
 bot = commands.Bot(command_prefix = "!")
 buttons = ButtonsClient(bot)
