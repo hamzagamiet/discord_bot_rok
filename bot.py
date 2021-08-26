@@ -6,7 +6,7 @@ from dictionaries import commanders
 from datetime import datetime
 
 
-TOKEN = ""
+TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.eseGQs_A2CW9TN2Zew2mCyxjaGY"
 
 bot = commands.Bot(command_prefix = "!")
 buttons = ButtonsClient(bot)
@@ -52,8 +52,8 @@ async def Com(ctx):
                 embed = info
                 embed.set_image(url=commanders[name]['roles'][current_build]['build'])
                 fields = [
-                    ("Recommended Pairings", pairings, True),
-                    ("Statistics", 
+                    ("**Recommended Pairings**", pairings, True),
+                    ("**Statistics**", 
                     f"Attack: +{commanders[name]['roles'][current_build]['attack']}\n"
                     f"Defence: +{commanders[name]['roles'][current_build]['defence']}\n"
                     f"Health: +{commanders[name]['roles'][current_build]['health']}\n"
