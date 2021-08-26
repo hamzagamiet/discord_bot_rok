@@ -3,6 +3,7 @@ import random
 from discord_buttons_plugin import *
 from discord.ext import commands
 from dictionaries import commanders
+from datetime import datetime
 
 
 TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.tmK7z05SOsTLSJ3hiY485EZs4Hs"
@@ -34,26 +35,37 @@ async def Com(ctx):
                 print_roles = "/ ".join(commanders[name]['roles']).title()
                 roles_list = [role for role in commanders[name]['roles']]
 
-                pairings = ""
-                for pair in commanders[name]['roles'][roles_list[0]]['pairings']:
-                    pairings += pair+"\n"
+                current_build = roles_list [0]
 
+                pairings = ""
+                for pair in commanders[name]['roles'][current_build]['pairings']:
+                    pairings += pair+"\n"
 
                 info = discord.Embed(
                     title=f"{name} | {commanders[name]['title']}\n",
                     description= 
                     f"{commanders[name]['skills'][0]} | {commanders[name]['skills'][1]} | {commanders[name]['skills'][2]} \n\n"
                     f"**Rarity:** {commanders[name]['rarity']}\n**Troop Type:** {commanders[name]['type']}\n**Roles:** {print_roles}"
-                    f"\n\n**Recommended Pairings:**\n{pairings}"
-                    f"\n**Statistics:**\n"
-                    f"Attack: +{commanders[name]['roles'][roles_list[0]]['attack']}\n"
-                    f"Defence: +{commanders[name]['roles'][roles_list[0]]['defence']}\n"
-                    f"Health: +{commanders[name]['roles'][roles_list[0]]['health']}\n"
-                    f"March Speed: +{commanders[name]['roles'][roles_list[0]]['march speed']}\n"
-                    f"\n**Talent Tree:**\n{commanders[name]['roles'][roles_list[0]]['build']}"
-                    f"\nUse the buttons to navigate the information for {name}. All credits for this bot go to HAMZA#9000")
+                    f"\n\n**{current_build.title()} Build and Pairings:**",
+                    timestamp = datetime.utcnow()
+                )
+                embed = info
+                embed.set_image(url=commanders[name]['roles'][current_build]['build'])
+                fields = [
+                    ("Recommended Pairings", pairings, True),
+                    ("Statistics", 
+                    f"Attack: +{commanders[name]['roles'][current_build]['attack']}\n"
+                    f"Defence: +{commanders[name]['roles'][current_build]['defence']}\n"
+                    f"Health: +{commanders[name]['roles'][current_build]['health']}\n"
+                    f"March Speed: +{commanders[name]['roles'][current_build]['march speed']}\n", True),
+                ]
+                for name, value, inline in fields:
+                    embed.add_field(name=name, value=value, inline=inline)
+                embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")        
+                embed.set_footer(text = f"Use the buttons to navigate the information for {name}. Bot made by HAMZA#9000")
+
                 await buttons.send(
-                    embed = info,
+                    embed = embed,
                     channel = ctx.channel.id,
                     components = [
                         ActionRow([
