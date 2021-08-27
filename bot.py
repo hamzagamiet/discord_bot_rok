@@ -15,7 +15,13 @@ buttons = ButtonsClient(bot)
 @bot.event
 async def on_ready():
     print ("{0.user} is online".format(bot))
-    client.user.setActivity("Rise of Kingdoms"); 
+    bot.user.setStatus('available')
+    bot.user.setPresence({
+        game: {
+            name: 'Rise of Kingdoms',
+            type: "Helping",
+            url: "https://discord.gg/qgNpQXnA"
+        }
 
 @bot.command()
 async def Com(ctx):
