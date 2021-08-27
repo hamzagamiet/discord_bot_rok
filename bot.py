@@ -49,6 +49,8 @@ async def Com(ctx):
                 )
                 embed = info
                 embed.set_image(url=commanders[name]['roles'][current_build]['build'])
+                embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")
+                embed.set_footer(text = f"Use the buttons to navigate the information for {name}.\nBot development server: https://discord.gg/qgNpQXnA\nBot made by HAMZA#9000")
                 fields = [
                     ("**Recommended Pairings**", pairings, True),
                     ("**Statistics**", 
@@ -57,10 +59,9 @@ async def Com(ctx):
                     f"Health: +{commanders[name]['roles'][current_build]['health']}\n"
                     f"March Speed: +{commanders[name]['roles'][current_build]['march speed']}\n", True),
                 ]
+                #REASSIGNMENT OF "NAME"
                 for name, value, inline in fields:
                     embed.add_field(name=name, value=value, inline=inline)
-                embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")        
-                embed.set_footer(text = f"Use the buttons to navigate the information for {name}.\nBot development server: https://discord.gg/qgNpQXnA\nBot made by HAMZA#9000")
 
                 #LIST COMPREHENSION for Buttons
                 ActionRow_list = [                    
