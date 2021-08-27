@@ -60,8 +60,9 @@ async def Com(ctx):
                 for name, value, inline in fields:
                     embed.add_field(name=name, value=value, inline=inline)
                 embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")        
-                embed.set_footer(text = f"Use the buttons to navigate the information for {name}. Bot made by HAMZA#9000")
+                embed.set_footer(text = f"Use the buttons to navigate the information for {name}.\nBot development server: https://discord.gg/qgNpQXnA\nBot made by HAMZA#9000")
 
+                #LIST COMPREHENSION for Buttons
                 ActionRow_list = [                    
                     Button(
                         label = role.title(),
