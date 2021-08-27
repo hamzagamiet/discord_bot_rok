@@ -53,7 +53,6 @@ async def Com(ctx):
                 embed.set_footer(
                     text = f"Use the buttons to navigate the information for {name}."
                     f"Bot made by HAMZA#9000",
-                    url = "https://discord.gg/qgNpQXnA"
                     )
                 fields = [
                     ("**Recommended Pairings**", pairings, True),
@@ -76,6 +75,14 @@ async def Com(ctx):
                     )
                     for role in roles_list
                 ]
+                ActionRow_list.append(
+                    Button(
+                        label = "Support",
+                        style = ButtonType().Secondary,
+                        url = "https://discord.gg/qgNpQXnA",
+                        custom_id = support,
+                    )
+                )
 
                 await buttons.send(
                     embed = embed,
