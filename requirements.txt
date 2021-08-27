@@ -2,3 +2,4 @@ discord
 discord_buttons_plugin
 discord-ext-bot
 datetime
+requests

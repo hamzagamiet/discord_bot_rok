@@ -4,6 +4,7 @@ from discord_buttons_plugin import *
 from discord.ext import commands
 from dictionaries import commanders
 from datetime import datetime
+import requests
 
 
 TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.eseGQs_A2CW9TN2Zew2mCyxjaGY"
@@ -27,10 +28,6 @@ async def Com(ctx):
         for search in commanders[name]['search']:
             if message.lower() == search.lower():
                 print (f"Match found: {name}")
-
-                # pairings = ""
-                # for pair in commanders[name]['pairings']:
-                #     pairings += pair + "\n"
 
                 print_roles = "/ ".join(commanders[name]['roles']).title()
                 roles_list = [role for role in commanders[name]['roles']]
