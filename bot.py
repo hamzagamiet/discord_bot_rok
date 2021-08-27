@@ -78,9 +78,8 @@ async def Com(ctx):
                 ActionRow_list.append(
                     Button(
                         label = "Support",
-                        style = 5,
+                        style = ButtonType().Link,
                         url = "https://discord.gg/qgNpQXnA",
-                        custom_id = support,
                     )
                 )
 
