@@ -52,8 +52,8 @@ async def Com(ctx):
                 embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")
                 embed.set_footer(
                     text = f"Use the buttons to navigate the information for {name}."
-                    f"Bot development server: https://discord.gg/qgNpQXnA"
-                    f"Bot made by HAMZA#9000"
+                    f"Bot made by HAMZA#9000",
+                    url = "https://discord.gg/qgNpQXnA"
                     )
                 fields = [
                     ("**Recommended Pairings**", pairings, True),
