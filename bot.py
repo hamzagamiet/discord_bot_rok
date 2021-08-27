@@ -15,6 +15,7 @@ buttons = ButtonsClient(bot)
 @bot.event
 async def on_ready():
     print ("{0.user} is online".format(bot))
+    client.user.setActivity("Rise of Kingdoms"); 
 
 @bot.command()
 async def Com(ctx):
