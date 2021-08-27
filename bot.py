@@ -35,7 +35,7 @@ async def Com(ctx):
                 print_roles = "/ ".join(commanders[name]['roles']).title()
                 roles_list = [role for role in commanders[name]['roles']]
 
-                current_build = roles_list [0]
+                current_build = roles_list[0]
 
                 pairings = ""
                 for pair in commanders[name]['roles'][current_build]['pairings']:
@@ -64,22 +64,20 @@ async def Com(ctx):
                 embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")        
                 embed.set_footer(text = f"Use the buttons to navigate the information for {name}. Bot made by HAMZA#9000")
 
+                ActionRow_list = [                    
+                    Button(
+                        label = role.title(),
+                        style = ButtonType().Primary,
+                        custom_id = role,
+                    )
+                    for role in roles_list
+                ]
+
                 await buttons.send(
                     embed = embed,
                     channel = ctx.channel.id,
                     components = [
-                        ActionRow([
-                            Button(
-                                label = "<",
-                                style = ButtonType().Primary,
-                                custom_id = "left"
-                            ),
-                            Button(
-                                label = ">",
-                                style = ButtonType().Primary,
-                                custom_id = "right"
-                            )
-                        ])
+                        ActionRow(ActionRow_list)
                     ]
                 )
 
