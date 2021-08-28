@@ -128,9 +128,11 @@ async def left(ctx):
     ActionRow_list = get_buttons()
     await ctx.reply("Left Clicked")
     await ctx.message.edit(
-        embed=embed,
+        embed = embed,
         channel = ctx.channel.id,
-        ActionRow_list = get_buttons(),
+        components = [
+            ActionRow(ActionRow_list)
+        ]
     )
     return
 
@@ -149,9 +151,11 @@ async def right(ctx):
     ActionRow_list = get_buttons()
     await ctx.reply("Right Clicked")
     await ctx.message.edit(
-        embed=embed,
+        embed = embed,
         channel = ctx.channel.id,
-        ActionRow_list = get_buttons(),
+        components = [
+            ActionRow(ActionRow_list)
+        ]
     )
     return
 
