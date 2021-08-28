@@ -130,9 +130,6 @@ async def left(ctx):
     await ctx.message.edit(
         embed = embed,
         channel = ctx.channel.id,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
     )
     return
 
@@ -153,9 +150,6 @@ async def right(ctx):
     await ctx.message.edit(
         embed = embed,
         channel = ctx.channel.id,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
     )
     return
 
