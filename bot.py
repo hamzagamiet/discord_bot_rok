@@ -82,13 +82,82 @@ async def Com(ctx):
                     )
                 )
 
-                await buttons.send(
+                click = await buttons.send(
                     embed = embed,
                     channel = ctx.channel.id,
                     components = [
                         ActionRow(ActionRow_list)
                     ]
                 )
+
+                res = await ddb.wait_for_button_click(click)
+                for current_role in roles_list:
+                    if res.button.label.lower() == current_role.lower():
+                        await edit(
+                            click,
+
+                            print_roles = "/ ".join(commanders[name]['roles']).title()
+                            roles_list = [role for role in commanders[name]['roles']]
+
+                            current_build = current_role
+
+                            pairings = ""
+                            for pair in commanders[name]['roles'][current_build]['pairings']:
+                                pairings += pair+"\n"
+
+                            info = discord.Embed(
+                                title=f"{name} | {commanders[name]['title']}\n",
+                                description= 
+                                f"{commanders[name]['skills'][0]} | {commanders[name]['skills'][1]} | {commanders[name]['skills'][2]} \n\n"
+                                f"**Rarity:** {commanders[name]['rarity']}\n**Troop Type:** {commanders[name]['type']}\n**Roles:** {print_roles}"
+                                f"\n\n**{current_build.title()} Build and Pairings:**",
+                                timestamp = datetime.utcnow()
+                            )
+                            embed = info
+                            embed.set_image(url=commanders[name]['roles'][current_build]['build'])
+                            embed.set_author(name="ROKBot", icon_url = "https://pbs.twimg.com/profile_images/1032911346554220544/sxBmKpGB_400x400.jpg")
+                            embed.set_footer(
+                                text = f"Use the buttons to navigate the information for {name}. Bot made by HAMZA#9000"
+                                )
+                            fields = [
+                                ("**Recommended Pairings**", pairings, True),
+                                ("**Statistics**", 
+                                f"Attack: +{commanders[name]['roles'][current_build]['attack']}\n"
+                                f"Defence: +{commanders[name]['roles'][current_build]['defence']}\n"
+                                f"Health: +{commanders[name]['roles'][current_build]['health']}\n"
+                                f"March Speed: +{commanders[name]['roles'][current_build]['march speed']}\n", True),
+                            ]
+                            #REASSIGNMENT OF "NAME"
+                            for name, value, inline in fields:
+                                embed.add_field(name=name, value=value, inline=inline)
+
+                            #LIST COMPREHENSION for Buttons
+                            ActionRow_list = [                    
+                                Button(
+                                    label = role.title(),
+                                    style = ButtonType().Primary,
+                                    custom_id = role,
+                                )
+                                for role in roles_list
+                            ]
+                            ActionRow_list.append(
+                                Button(
+                                    label = "Support",
+                                    style = ButtonType().Link,
+                                    url = "https://discord.gg/qgNpQXnA",
+                                )
+                            )
+
+                            click = await buttons.send(
+                                embed = embed,
+                                channel = ctx.channel.id,
+                                components = [
+                                    ActionRow(ActionRow_list)
+                                ]
+                            )
+
+                            )
+
 
 
 @bot.event
