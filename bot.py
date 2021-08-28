@@ -126,11 +126,9 @@ async def left(ctx):
 
     embed = commander_embed(name, index)
     ActionRow_list = get_buttons()
+    await ctx.reply(" ")
     await ctx.message.edit(
         embed = embed,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
     )
 
 
@@ -146,11 +144,9 @@ async def right(ctx):
 
     embed = commander_embed(name, index)
     ActionRow_list = get_buttons()
+    await ctx.reply("")
     await ctx.message.edit(
         embed = embed,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
     )
 
 @bot.event
