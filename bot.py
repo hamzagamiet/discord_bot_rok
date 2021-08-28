@@ -35,7 +35,7 @@ def commander_embed(name, index):
         pairings += pair+"\n"
 
     info = discord.Embed(
-        title=f"{name} | {commanders[name]['title']} {index+1}/{len(roles_list)}\n",
+        title=f"**{name} | {commanders[name]['title']} {index+1}/{len(roles_list)}**\n",
         description= 
         f"{commanders[name]['skills'][0]} | {commanders[name]['skills'][1]} | {commanders[name]['skills'][2]} \n\n"
         f"**Rarity:** {commanders[name]['rarity']}\n**Troop Type:** {commanders[name]['type']}\n**Roles:** {print_roles}"
