@@ -54,7 +54,7 @@ def commander_embed(name, index):
         f"Attack: +{commanders[name]['roles'][current_build]['attack']}\n"
         f"Defence: +{commanders[name]['roles'][current_build]['defence']}\n"
         f"Health: +{commanders[name]['roles'][current_build]['health']}\n"
-        f"March Speed: +{commanders[name]['roles'][current_build]['march speed']}\n", True),
+        f"March Spd: +{commanders[name]['roles'][current_build]['march speed']}\n", True),
     ]
     #REASSIGNMENT OF "NAME"
     for name, value, inline in fields:
