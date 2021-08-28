@@ -127,13 +127,6 @@ async def left(ctx):
     embed = commander_embed(name, index)
     ActionRow_list = get_buttons()
 
-    await buttons.send(
-        embed = embed,
-        channel = ctx.channel.id,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
-    )
     await ctx.reply("Left Clicked")
     await ctx.message.edit(embed=embed)
 
@@ -151,13 +144,6 @@ async def right(ctx):
     embed = commander_embed(name, index)
     ActionRow_list = get_buttons()
 
-    await buttons.send(
-        embed = embed,
-        channel = ctx.channel.id,
-        components = [
-            ActionRow(ActionRow_list)
-        ]
-    )
     await ctx.reply("Right Clicked")
     await ctx.message.edit(embed=embed)
 
