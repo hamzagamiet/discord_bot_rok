@@ -7,7 +7,7 @@ from datetime import datetime
 import requests
 import asyncio
 
-TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.eseGQs_A2CW9TN2Zew2mCyxjaGY"
+TOKEN = ""
 
 bot = commands.Bot(command_prefix = "!")
 buttons = ButtonsClient(bot)
