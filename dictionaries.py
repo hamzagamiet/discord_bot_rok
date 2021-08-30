@@ -27,7 +27,7 @@ commanders ={
                 "defence": 5,
                 "health": 4,
                 "march speed": 0,
-                "build": os.path.join("https://rok.guide/wp-content/uploads/2020/08/charles-martel-openfield-build.jpg"),
+                "build": os.path.join("https://cdn.rok.guide/wp-content/uploads/2020/08/charles-martel-garrison-build-1536x1053.jpg"),
                 "pairings": [
                     "Constanine I (Secondary)",
                     "Wu Zetian (Primary)",
@@ -55,7 +55,7 @@ commanders ={
                 "defence": 9.5,
                 "health": 13,
                 "march speed": 24,
-                "build": os.path.join("https://cdn.rok.guide/wp-content/uploads/2020/08/charles-martel-garrison-build-1536x1053.jpg"),
+                "build": os.path.join("https://rok.guide/wp-content/uploads/2020/08/charles-martel-openfield-build.jpg"),
                 "pairings": [
                     "Alexander The Great (Primary)",
                     "Richard I (Primary)",
