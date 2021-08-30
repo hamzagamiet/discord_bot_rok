@@ -23,10 +23,10 @@ commanders ={
 
         "roles": {
             "city defense": {
-                "attack": 10,
-                "defence": 9.5,
-                "health": 13,
-                "march speed": 24,
+                "attack": 6,
+                "defence": 5,
+                "health": 4,
+                "march speed": 0,
                 "build": os.path.join("https://rok.guide/wp-content/uploads/2020/08/charles-martel-openfield-build.jpg"),
                 "pairings": [
                     "Constanine I (Secondary)",
@@ -51,10 +51,10 @@ commanders ={
                 ],
             },
             "open field": {
-                "attack": 6,
-                "defence": 5,
-                "health": 4,
-                "march speed": 0,
+                "attack": 10,
+                "defence": 9.5,
+                "health": 13,
+                "march speed": 24,
                 "build": os.path.join("https://cdn.rok.guide/wp-content/uploads/2020/08/charles-martel-garrison-build-1536x1053.jpg"),
                 "pairings": [
                     "Alexander The Great (Primary)",
