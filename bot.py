@@ -98,13 +98,14 @@ def get_buttons():
 @bot.command()
 async def Com(ctx):
     message_split = str(ctx.message.content).split("Com")[1].split()
-    message = " ".join(message_split)
+    message = "%20".join(message_split)
 
     response = requests.get(
-        "https://rise-of-kingdoms-api.herokuapp.com/api/commander/<str:pk>"
+        f"https://rise-of-kingdoms-api.herokuapp.com/api/commander/{message}
     )
     commander_info = response.json()
     try:
+        await ctx.reply(commander_info["commander"]["name"])
         index = 0
         embed = commander_embed(
             commander_info, commander_info["commander"]["name"], index
