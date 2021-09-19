@@ -101,7 +101,7 @@ async def Com(ctx):
     message = " ".join(message_split)
 
     response = requests.get(
-        "https://rise-of-kingdoms-bot.herokuapp.com/api/commander/<str:pk>"
+        "https://rise-of-kingdoms-api.herokuapp.com/api/commander/<str:pk>"
     )
     commander_info = response.json()
     try:
