@@ -2,7 +2,6 @@ import discord
 import random
 from discord_buttons_plugin import *
 from discord.ext import commands
-from commander_bot.models import Commander
 from datetime import datetime
 import requests
 import asyncio
