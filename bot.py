@@ -8,7 +8,7 @@ import requests
 import asyncio
 import json
 
-TOKEN = "ODYyNTMxMjE4NzA4NDk2NDM1.YOZsyw.zsYmx9TR0LAp7_NHqg6mfu1zEmU"
+TOKEN = ""
 
 bot = commands.Bot(command_prefix="!")
 buttons = ButtonsClient(bot)
