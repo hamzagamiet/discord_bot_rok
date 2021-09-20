@@ -39,9 +39,9 @@ def commander_embed(commander_info, name, index):
         secondary_pairings += pair + "\n"
 
     info = discord.Embed(
-        title=f"{name} | {commander_info['commander']['title']} {index+1}/{len(roles_list)}\n",
-        description=f"{commander_info['commander']['speciality_one']} | {commander_info['commander']['speciality_two']} | {commander_info['commander']['speciality_three']} \n\n"
-        f"**Rarity:** {commander_info['commander']['rarity']}\n**Troop Type:** {commander_info['commander']['troop_type']}\n**Roles:** {print_roles}"
+        title=f"{name} | {str(commander_info['commander']['title']).title()} {index+1}/{len(roles_list)}\n",
+        description=f"{str(commander_info['commander']['speciality_one']).title()} | {(commander_info['commander']['speciality_two']).title()} | {(commander_info['commander']['speciality_three']).title()} \n\n"
+        f"**Rarity:** {str(commander_info['commander']['rarity']).title()}\n**Troop Type:** {str(commander_info['commander']['troop_type']).title()}\n**Roles:** {print_roles}"
         f"\n\n**{current_build.title()} Build and Pairings:**",
         timestamp=datetime.utcnow(),
     )
@@ -59,10 +59,10 @@ def commander_embed(commander_info, name, index):
         ("**Secondary**", secondary_pairings, True),
         (
             "**Statistics**",
-            f"Attack: +{commander_info['builds'][current_build]['attack']}\n"
-            f"Defence: +{commander_info['builds'][current_build]['defence']}\n"
-            f"Health: +{commander_info['builds'][current_build]['health']}\n"
-            f"March Spd: +{commander_info['builds'][current_build]['march_speed']}\n",
+            f"Attack: +{commander_info['builds'][current_build]['attack']}%\n"
+            f"Defence: +{commander_info['builds'][current_build]['defence']}%\n"
+            f"Health: +{commander_info['builds'][current_build]['health']}%\n"
+            f"March Spd: +{commander_info['builds'][current_build]['march_speed']}%\n",
             True,
         ),
     ]
