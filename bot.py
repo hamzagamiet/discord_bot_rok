@@ -28,14 +28,14 @@ def commander_embed(commander_info, name, index):
         index = len(roles_list) - 1
 
     print(f"Going to page {index+1}")
-    current_build = roles_list[index]
+    current_build = str(roles_list[index])
 
     primary_pairings = ""
     for pair in commander_info["builds"][current_build]["primary_pairings"]:
         primary_pairings += pair + "\n"
 
     secondary_pairings = ""
-    for pair in commander_info["builds"][current_build]["primary_pairings"]:
+    for pair in commander_info["builds"][current_build]["secondary_pairings"]:
         secondary_pairings += pair + "\n"
 
     info = discord.Embed(
@@ -55,14 +55,14 @@ def commander_embed(commander_info, name, index):
         text=f"Use the buttons to navigate the information for {name}. Bot made by HAMZA#9000"
     )
     fields = [
-        ("**Primary Pairings**", primary_pairings, True),
-        ("**Secondary Pairings**", secondary_pairings, True),
+        ("**Primary**", primary_pairings, True),
+        ("**Secondary**", secondary_pairings, True),
         (
             "**Statistics**",
             f"Attack: +{commander_info['builds'][current_build]['attack']}\n"
             f"Defence: +{commander_info['builds'][current_build]['defence']}\n"
             f"Health: +{commander_info['builds'][current_build]['health']}\n"
-            f"March Spd: +{commander_info['builds'][current_build]['march speed']}\n",
+            f"March Spd: +{commander_info['builds'][current_build]['march_speed']}\n",
             True,
         ),
     ]
@@ -101,18 +101,15 @@ async def Com(ctx):
     message = "%20".join(message_split)
 
     response = requests.get(
-        f"https://rise-of-kingdoms-api.herokuapp.com/api/commander/{message}
+        f"https://rise-of-kingdoms-api.herokuapp.com/api/commander/{message}"
     )
     commander_info = response.json()
     try:
-        await ctx.reply(commander_info["commander"]["name"])
         index = 0
         embed = commander_embed(
             commander_info, commander_info["commander"]["name"], index
         )
-
         ActionRow_list = get_buttons()
-
         await buttons.send(
             embed=embed, channel=ctx.channel.id, components=[ActionRow(ActionRow_list)]
         )
@@ -129,7 +126,13 @@ async def left(ctx):
     current_index = page - 1
     index = current_index - 1
 
-    embed = commander_embed(name, index)
+    name_link = "%20".join(name_split)
+    response = requests.get(
+        f"https://rise-of-kingdoms-api.herokuapp.com/api/commander/{name_link}"
+    )
+    commander_info = response.json()
+
+    embed = commander_embed(commander_info, name, index)
     ActionRow_list = get_buttons()
     await ctx.reply(" ")
     await ctx.message.edit(
@@ -146,7 +149,13 @@ async def right(ctx):
     current_index = page - 1
     index = current_index + 1
 
-    embed = commander_embed(name, index)
+    name_link = "%20".join(name_split)
+    response = requests.get(
+        f"https://rise-of-kingdoms-api.herokuapp.com/api/commander/{name_link}"
+    )
+    commander_info = response.json()
+
+    embed = commander_embed(commander_info, name, index)
     ActionRow_list = get_buttons()
     await ctx.reply("")
     await ctx.message.edit(
